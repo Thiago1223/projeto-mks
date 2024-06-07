@@ -7,7 +7,11 @@ import Footer from "./Footer";
 import { Product, getProducts, OrderBy } from "../services/api/productService";
 import "../styles/Products.css";
 
-const Products: React.FC = () => {
+interface ProductsProps {
+  onAddToCart: (product: Product) => void;
+}
+
+const Products: React.FC<ProductsProps> = ({ onAddToCart }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [totalResults, setTotalResults] = useState<number>(0);
   const [orderBy, setOrderBy] = useState<OrderBy>("ASC");
@@ -60,14 +64,8 @@ const Products: React.FC = () => {
       <div className="products-container">
         <span className="result">{totalResults} resultados encontrados</span>
         <div className="order-container" onClick={toggleOrderBy}>
-          <span className="order">
-            ORDENAR POR: {orderBy === "ASC" ? "CRESCENTE" : "DECRESCENTE"}
-          </span>
-          <img
-            src={orderBy === "ASC" ? arrowUpIcon : arrowDownIcon}
-            alt="Arrow Icon"
-            className="icon"
-          />
+          <span className="order"> ORDENAR POR: {orderBy === "ASC" ? "CRESCENTE" : "DECRESCENTE"} </span>
+          <img src={orderBy === "ASC" ? arrowUpIcon : arrowDownIcon} alt="Arrow Icon" className="icon" />
         </div>
       </div>
       <div className="cards-container">
@@ -75,11 +73,16 @@ const Products: React.FC = () => {
           <Card
             key={product.id}
             product={{
+              id: product.id,
               name: product.name,
               brand: product.brand,
               photo: product.photo,
               price: product.price,
+              description: product.description,
+              createdAt: product.createdAt,
+              updatedAt: product.updatedAt,
             }}
+            onAddToCart={onAddToCart}
           />
         ))}
       </div>
