@@ -4,8 +4,6 @@
 
 [Clique aqui](https://github.com/Thiago1223/projeto-mks)
 
-[Figma](https://www.figma.com/design/8GnLmPs7gekZPGOj4N7nli/Teste-Mks?node-id=1-2&t=lQwZwflbR0zlOEPu-0)
-
 [Link para acessar o site](https://projeto-mks-ten.vercel.app/)
 
 # Sobre
